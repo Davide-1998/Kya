@@ -83,7 +83,9 @@ add_custom_target(
 
 add_custom_command(
 	TARGET Shaders
+	PRE_BUILD
 	COMMAND ${CMAKE_COMMAND} -E make_directory ${SHADER_OUTPUT_FOLDER}
+	BYPRODUCTS ${SHADER_OUTPUT_FOLDER}
 )
 
 target_sources(Shaders PRIVATE 
