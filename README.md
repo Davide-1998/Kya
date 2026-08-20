@@ -36,9 +36,11 @@ For additional resources, for additional technical documentation, please visit [
 **This is a work in progress, currently needs fixing as it may not run succesfully once built. It also currently only compiles for Windows.**
 
 **Requirements**:  
-- Visual Studio 2022  
-- Clang builder and tools for VS2022 (from the Visual Studio Installer) 
+
+- Visual Studio 2022
+- Clang builder and tools for VS2022 (from the Visual Studio Installer)
 - Vulkan SDK (including GLM Headers)
+- Windows SDK > 10.0.20348.0
 
 To begin working with the decompiled code:
 
@@ -63,6 +65,8 @@ To begin working with the decompiled code:
    The Windows ASan runtime DLL is copied next to the generated executable automatically.
 
 4. **Run and Test**
+
+   Assets folder!?
 
 ---
 
