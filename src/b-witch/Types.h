@@ -669,7 +669,7 @@ inline edF32MATRIX4 operator*(const edF32MATRIX4& lhs, const float& rhs)
 
 #define EDITOR_BUILD PLATFORM_WIN
 
-#include "Logging.h"
+#include "logging.h"
 
 #ifdef PLATFORM_WIN
 #define NAME_NEXT_OBJECT(format, ...) ObjectNaming::SetNextObjectName(format, __VA_ARGS__)
