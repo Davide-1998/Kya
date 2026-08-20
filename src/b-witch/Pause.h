@@ -110,7 +110,7 @@ public:
 	void set_font_help(struct edCTextFont* pFont);
 	void set_font_message(struct edCTextFont* pFont);
 	void set_font_title(struct edCTextFont* pFont);
-	void set_message_manager(struct CMessageFile* pTextData);
+	void set_message_manager(class CMessageFile* pTextData);
 	EPauseMenu get_current_page();
 	void perform_action();
 	uint get_action();
@@ -139,7 +139,7 @@ public:
 
 	void FUN_002f1b50(ActionFuncPtr pFunc, int slot);
 
-	struct CMessageFile* pTranslatedTextData;
+	class CMessageFile* pTranslatedTextData;
 	struct edCTextFont* pFontA;
 	struct edCTextFont* pFontB;
 	struct edCTextFont* pFontC;

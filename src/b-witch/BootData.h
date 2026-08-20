@@ -4,7 +4,7 @@
 #include "Types.h"
 #include "Pause.h"
 
-struct edCTextStyle;
+class edCTextStyle;
 struct edBANK_ENTRY_INFO;
 
 extern CSprite MenuBitmaps[13];

@@ -2113,7 +2113,7 @@ public:
 	undefined field_0x847;
 	SaveDataDesc aSaveDataDescriptions[4];
 	SaveDataHeader saveDataHeader;
-	struct edCFiler* pFiler;
+	class edCFiler* pFiler;
 };
 
 extern CSaveManagement gSaveManagement;

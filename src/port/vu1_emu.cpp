@@ -900,7 +900,20 @@ namespace VU1Emu {
 			VU_VTX_TRACE_LOG("KickVertexFromReg 0x{:x} | 0x{:x} x: 0x{:x} y: 0x{:x}, z: 0x{:x}, skip: 0x{:x}", vtxReg, vtxReg + 2, x, y, z, skip);
 
 			Renderer::SetVertexSkip(skip & 0x8000);
-			Renderer::GSVertex vtx{ { STQ.x, STQ.y }, {RGBA.xi, RGBA.yi, RGBA.zi, RGBA.wi }, STQ.z, { x, y }, z, 0, 0 };
+			Renderer::GSVertex vtx{
+				{ STQ.x, STQ.y }, 
+				{
+				  static_cast<std::uint32_t>(RGBA.xi),
+				  static_cast<std::uint32_t>(RGBA.yi),
+				  static_cast<std::uint32_t>(RGBA.zi), 
+				  static_cast<std::uint32_t>(RGBA.wi)
+				},
+				STQ.z,
+				{ 
+				  static_cast<std::uint32_t>(x),
+				  static_cast<std::uint32_t>(y)
+				},
+				static_cast<std::uint32_t>(z), 0, 0 };
 
 			const GIFReg::GSPrim pPrimPacked = *reinterpret_cast<const GIFReg::GSPrim*>(&prim);
 			Renderer::KickVertex(vtx, pPrimPacked, skip & 0x8000, *pDrawBuffer);

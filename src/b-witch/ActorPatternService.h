@@ -3,7 +3,7 @@
 
 #include "Types.h"
 
-class ByteCode;
+struct ByteCode;
 
 class CPointPattern
 {

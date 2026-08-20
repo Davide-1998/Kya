@@ -289,7 +289,7 @@ struct S_LVLNFO_LANGUAGE_V7_V9
 static_assert(sizeof(S_LVLNFO_LANGUAGE_V7_V9) == 0x1c);
 
 class CActor;
-class SaveDataChunk_BLMP;
+struct SaveDataChunk_BLMP;
 
 struct EpStruct_8
 {

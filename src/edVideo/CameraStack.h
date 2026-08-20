@@ -3,7 +3,7 @@
 
 #include "Types.h"
 
-struct CCamera;
+class CCamera;
 
 struct CameraStackEntry {
 	uint field_0x0;

@@ -96,7 +96,7 @@ public:
 	undefined field_0xa1;
 	undefined field_0xa2;
 	undefined field_0xa3;
-	struct CCamera* pNextCameraView_0xa4;
+	class CCamera* pNextCameraView_0xa4;
 };
 
 class CCameraDCA : public CCamera
@@ -145,7 +145,7 @@ public:
 	undefined field_0xad;
 	undefined field_0xae;
 	undefined field_0xaf;
-	struct CActor* pActorView;
+	class CActor* pActorView;
 	edF32VECTOR3 angles;
 	float distance;
 	undefined field_0xc4;

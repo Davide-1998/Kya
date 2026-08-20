@@ -1289,7 +1289,7 @@ void CCinematic::Start()
 	return;
 }
 
-edCBankCallback _gCinTableBankCallback[1] = {-1, -1, 0x0, 0, 0, 0, 0, 0};
+edCBankCallback _gCinTableBankCallback[1] = {static_cast<uint>(-1), static_cast<uint>(-1), 0x0, 0, 0, 0, 0, 0};
 
 void CCinematic::Load(int mode)
 {

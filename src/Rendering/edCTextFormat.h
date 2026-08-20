@@ -27,7 +27,7 @@ struct TextLine
 {
 	char* pTextStart;
 	char* pTextEnd;
-	struct edCTextStyle* pTextStyle;
+	class edCTextStyle* pTextStyle;
 	char* pText;
 	float field_0x10;
 	float field_0x14;

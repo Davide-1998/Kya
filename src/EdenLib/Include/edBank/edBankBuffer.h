@@ -4,7 +4,7 @@
 #include "Types.h"
 #include "edMem.h"
 
-class edCBankInstall;
+struct edCBankInstall;
 class edCBankBuffer;
 class edCBankFileHeader;
 

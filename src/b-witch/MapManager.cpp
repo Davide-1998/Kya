@@ -2423,7 +2423,7 @@ void CLevelMap::Draw()
 	return;
 }
 
-edCBankCallback _gLevelMapBlankCallback[1] = { -1, -1, 0x0, 0, 0, 0, 0, 0 };
+edCBankCallback _gLevelMapBlankCallback[1] = { static_cast<uint>(-1), static_cast<uint>(-1), 0x0, 0, 0, 0, 0, 0 };
 
 void _gLevelMapCallback(bool param_1, void* pParams)
 {

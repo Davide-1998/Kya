@@ -587,7 +587,7 @@ inline ulong SetPrimWin(A prim, B iip, C tme, D fge, E abe, F aa1, G fst, H ctxt
 template<typename A>
 inline ulong SetClampWin(A clamp)
 {
-	Renderer::SetColClamp({ clamp });
+	Renderer::SetColClamp({ static_cast<std::uint32_t>(clamp) });
 	return SCE_GS_SET_COLCLAMP_PS2(clamp);
 }
 

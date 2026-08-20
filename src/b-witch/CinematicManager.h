@@ -20,7 +20,7 @@
 struct ed_g2d_manager;
 struct ed_g3d_manager;
 struct CActorCinematic;
-struct CActor;
+class CActor;
 
 #define CINEMATIC_LOAD_STATE_COMPLETE 4
 

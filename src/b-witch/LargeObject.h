@@ -61,30 +61,30 @@ struct CEventManager;
 
 union ManagerContainer {
 	struct {
-		struct CLevelScheduler* g_LevelScheduleManager_00451660;
+		class CLevelScheduler* g_LevelScheduleManager_00451660;
 		struct C3DFileManager* g_C3DFileManager_00451664;
 		struct CAnimationManager* g_AnimManager_00451668;
-		struct CCinematicManagerB* g_CinematicManagerB_0045166c;
+		class CCinematicManagerB* g_CinematicManagerB_0045166c;
 		struct CSectorManager* g_SectorManager_00451670;
-		struct CFrontendBank* g_FrontEndBank_00451674;
-		struct CLanguageManager* g_LocalizationManager_00451678;
-		struct CCameraManager* g_CameraManager_0045167c;
+		class CFrontendBank* g_FrontEndBank_00451674;
+		class CLanguageManager* g_LocalizationManager_00451678;
+		class CCameraManager* g_CameraManager_0045167c;
 		struct CFrontendDisplay* g_FrontendManager_00451680;
-		struct CHelpManager* g_HelpManager_00451684;
-		struct CPauseManager* g_PauseManager_00451688;
+		class CHelpManager* g_HelpManager_00451684;
+		class CPauseManager* g_PauseManager_00451688;
 		struct CMapManager* g_MapManager_0045168c;
 		class CCollisionManager* g_CollisionManager_00451690;
 		struct CLipTrackManager* g_LipTrackManager_00451694;
-		struct CAudioManager* g_AudioManager_00451698;
+		class CAudioManager* g_AudioManager_00451698;
 		struct CWayPointManager* g_WayPointManager_0045169c;
 		struct CPathManager* g_PathManager_004516a0;
-		struct CActorManager* g_ActorManager_004516a4;
-		CEventManager* g_EventManager_006f5080;
-		struct CCinematicManager* g_CinematicManagerPtr_004516ac;
-		struct CLightManager* g_LightManager_004516b0;
+		class CActorManager* g_ActorManager_004516a4;
+		struct CEventManager* g_EventManager_006f5080;
+		class CCinematicManager* g_CinematicManagerPtr_004516ac;
+		class CLightManager* g_LightManager_004516b0;
 		class CTrackManager* g_TrackManager_004516b4;
 		struct CFxManager* g_EffectsManager_004516b8;
-		struct CGlobalDListManager* g_GlobalDListManager_004516bc;
+		class CGlobalDListManager* g_GlobalDListManager_004516bc;
 	};
 
 	CObjectManager* aManagers[0x18];

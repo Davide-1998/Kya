@@ -118,7 +118,7 @@ public:
 	edF32VECTOR4 field_0x6c0;
 	edF32VECTOR4 field_0x6d0;
 	edF32VECTOR4 field_0x6e0;
-	struct CActor* field_0x6f0;
+	class CActor* field_0x6f0;
 	bool field_0x6f4;
 	bool field_0x6f5;
 	bool field_0x6f6;

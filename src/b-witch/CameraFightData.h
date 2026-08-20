@@ -5,7 +5,7 @@
 #include "Dynamic.h"
 
 class CActor;
-class CCameraGame;
+struct CCameraGame;
 
 struct ByteCode;
 

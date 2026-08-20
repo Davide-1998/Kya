@@ -105,8 +105,8 @@ EFileLoadMode GetFileLoadMode_00424d9c(void)
 	return g_InputSetupParams.version;
 }
 
-char* g_szCdRomPrefix_00438548 = "cdrom0:";
-char* g_szHostPrefix_00438550 = "host0:";
+const char* g_szCdRomPrefix_00438548 = "cdrom0:";
+const char* g_szHostPrefix_00438550 = "host0:";
 
 void ToUppercase(char* string)
 {

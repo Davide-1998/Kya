@@ -146,7 +146,7 @@ struct edAnmLayer
 	int field_0xb8;
 	float field_0xbc;
 	AnimationCallback pFunction_0xc0;
-	struct CActor* pActor;
+	class CActor* pActor;
 	edANM_HDR** pAnimManagerKeyData;
 	uint field_0xcc;
 	float playRate;

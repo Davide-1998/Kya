@@ -23,7 +23,7 @@
 class CActorBoomy;
 class CActorHero;
 class CedMathTCBSpline;
-class CCameraGame;
+struct CCameraGame;
 
 #define BOOMY_LAUNCH_STANDARD	0
 #define BOOMY_LAUNCH_SNIPE		1

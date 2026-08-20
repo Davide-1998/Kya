@@ -10,7 +10,7 @@
 #define CAMERA_LOG(level, format, ...) MY_LOG_CATEGORY("Camera", level, format, ##__VA_ARGS__)
 
 class CCameraMouseQuake;
-class CCameraShadow;
+struct CCameraShadow;
 
 struct edFCamera {
 	edF32VECTOR4 position;

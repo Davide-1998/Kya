@@ -9,7 +9,7 @@ struct edCBankDebug {
 	undefined field_0x2;
 	undefined field_0x3;
 	int bankCount;
-	struct edCBankBuffer* pNextBank;
+	class edCBankBuffer* pNextBank;
 	undefined4 field_0xc;
 	int selectedFileIndex;
 	void buffer_link(edCBankBuffer* pBankBuffer);

@@ -327,7 +327,7 @@ enum EActorState {
 	AS_None = -1,
 };
 
-struct CClusterNode;
+class CClusterNode;
 struct BoneData;
 
 class CCollision;

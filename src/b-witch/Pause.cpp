@@ -3022,7 +3022,7 @@ void HelpLeave()
 	IMPLEMENTATION_GUARD();
 }
 
-edCBankCallback edCBankCallback_004279c0[1] = {-1, -1, 0x0, 0, 0, 0, 0, 0};
+edCBankCallback edCBankCallback_004279c0[1] = {static_cast<uint>(-1), static_cast<uint>(-1), 0x0, 0, 0, 0, 0, 0};
 
 void OnMapFileLoaded(bool param_1, void* param_2)
 {

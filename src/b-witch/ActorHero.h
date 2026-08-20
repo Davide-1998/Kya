@@ -247,7 +247,7 @@
 #define HERO_BOOMY_STATE_STORM_CHARGE     0xc
 #define HERO_BOOMY_STATE_STORM_ACTIVE     0xd
 
-struct CPlayerInput;
+class CPlayerInput;
 class CActorBoomy;
 class CCamera;
 class CActorNativ;

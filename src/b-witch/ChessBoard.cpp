@@ -1124,9 +1124,9 @@ float CChessBoard::_PermutPawns(float param_1, CChessBoardPawnsRefTable* pTable,
 	int uVar2;
 	s_chess_board_pawn* psVar3;
 	bool bVar4;
-	int* puVar5;
+	unsigned int* puVar5;
 	int iVar6;
-	int* puVar7;
+	unsigned int* puVar7;
 	uint uVar8;
 	float fVar9;
 	float fVar10;

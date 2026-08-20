@@ -14,7 +14,7 @@ public:
 
 	static LANGUAGE sm_default_language;
 
-	void select_language(struct edCBankBufferEntry* pBankAccess, const char* pFilePath, LANGUAGE languageID);
+	void select_language(class edCBankBufferEntry* pBankAccess, const char* pFilePath, LANGUAGE languageID);
 	void select_language(const char* filePath, LANGUAGE languageID);
 	void prepare_buffer();
 
@@ -126,9 +126,9 @@ public:
 	ulong* pDataA;
 	char* pFileData;
 	uint size;
-	struct edCBankBufferEntry* pBankAccessObj;
-	struct CMessageFile* pPrev;
-	struct CMessageFile* pNext;
+	class edCBankBufferEntry* pBankAccessObj;
+	class CMessageFile* pPrev;
+	class CMessageFile* pNext;
 };
 
 class MessageManager {

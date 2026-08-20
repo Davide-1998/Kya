@@ -60,8 +60,8 @@ public:
 
 	char* pDriveName_0x0;
 	uint flags;
-	struct edCFiler* pPrevEd;
-	struct edCFiler* pNextEd;
+	class edCFiler* pPrevEd;
+	class edCFiler* pNextEd;
 	char filePath[16];
 };
 

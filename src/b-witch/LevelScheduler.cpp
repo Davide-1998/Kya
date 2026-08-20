@@ -54,8 +54,8 @@
 #define LEVEL_SCHEDULER_LOG(level, format, ...) MY_LOG_CATEGORY("levelScheduler", level, format, ##__VA_ARGS__)
 
 struct ScenarioVariable {
-	int defaultValue;
-	int currentValue;
+	unsigned int defaultValue;
+	unsigned int currentValue;
 };
 
 ScenarioVariable _gScenVarInfo[98] = {
@@ -597,8 +597,8 @@ void CLevelScheduler::MoreLoadLoopObjectSetup(bool param_2)
 	return;
 }
 
-edCBankCallback _gLevelsTableBankCallback = { -1, -1, 0x0, 0, 0, 0, 0, 0 };
-char* g_szLevelInfoBnkPath_00433c60 = "Info/levels.bnk";
+edCBankCallback _gLevelsTableBankCallback = { static_cast<uint>(-1), static_cast<uint>(-1), 0x0, 0, 0, 0, 0, 0 };
+const char* g_szLevelInfoBnkPath_00433c60 = "Info/levels.bnk";
 
 void CLevelScheduler::LevelsInfo_ReadHeader_V7_V9(S_LVLNFO_LEVEL_HEADER_V7* pLevelInfoHeader, S_LEVEL_INFO* pLevelInfo)
 {

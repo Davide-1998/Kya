@@ -54,7 +54,7 @@ edCBankCallback TableFrontendBankCallback[3] =
 {
 	{ BANK_CALLBACK_MESH, 0x1, BnkFrontendInstallG3D, 0, 0, 0, 0, 0 },
 	{ BANK_CALLBACK_TEXTURE, 0x1, BnkFrontendInstallG2D, 0, 0, 0, 0, 0 },
-	{ -1, -1, 0x0, 0, 0, 0, 0, 0 }
+	{ static_cast<uint>(-1), static_cast<uint>(-1), 0x0, 0, 0, 0, 0, 0 }
 };
 
 void CFrontendBank::Game_Init()
