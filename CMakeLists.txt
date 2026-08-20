@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.19.4)
+cmake_minimum_required(VERSION 3.19.4 FATAL_ERROR)
 
 # Override SPIRV-Reflect settings
 OPTION(SPIRV_REFLECT_EXECUTABLE     "Build spirv-reflect executable" OFF)
@@ -108,6 +108,17 @@ else()
 	endif()
 
 	if (CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+		if ("${CMAKE_CXX_SIMULATE_ID}" STREQUAL "MSVC")
+			# When using clang-cl provided with Visual Studio installer, flags have different syntax
+			# Emit full debug info for all used types
+			# Keeps frame pointer
+			# Disable function inlining
+			add_compile_options(
+				$<$<CONFIG:Debug>:-fstandalone-debug>
+				$<$<CONFIG:Debug>:/Oy->
+				$<$<CONFIG:Debug>:/Ob0>
+			)
+		else()
 		# Emit full debug info so variables are not reported as "optimized away"
 		# even at -O0. This overrides Clang's default of limiting debug info for
 		# types it considers unnecessary to fully describe.
@@ -124,6 +135,7 @@ else()
 			$<$<CONFIG:Debug>:-Xlinker>
 			$<$<CONFIG:Debug>:/DEBUG>
 		)
+		endif()
 	endif()
 
 	enable_testing()
@@ -862,7 +874,12 @@ else()
 		"${src_root}" "${src_root}/b-witch"
 	)
 
-	target_link_libraries(Kya PUBLIC Port Log VU Job steinwurf::recycle)
+	target_link_libraries(Kya 
+		PUBLIC
+			Port Log VU steinwurf::recycle
+		INTERFACE
+			Job Hash
+	)
 
 	if (ENABLE_ISPC)
 		target_sources(Kya PRIVATE ${ISPC_OBJECTS})

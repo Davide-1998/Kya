@@ -4,8 +4,8 @@ set(SOURCES
 	"hash.h" 
 )
 
-add_library(${TargetName} ${SOURCES})
+add_library(${TargetName} INTERFACE ${SOURCES})
 
 set_target_properties(${TargetName} PROPERTIES LINKER_LANGUAGE CXX)
 
-target_include_directories(${TargetName} PUBLIC "${CMAKE_CURRENT_LIST_DIR}")
+target_include_directories(${TargetName} INTERFACE "${CMAKE_CURRENT_LIST_DIR}")

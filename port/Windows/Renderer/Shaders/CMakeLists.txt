@@ -42,7 +42,8 @@ foreach(GLSL ${GLSL_SOURCE_FILES})
 		OUTPUT ${SPIRV}
 		COMMAND ${CMAKE_COMMAND} -E make_directory ${SHADER_OUTPUT_FOLDER}
 		COMMAND ${GLSL_VALIDATOR} -V ${GLSL} -o ${SPIRV} -gVS
-		DEPENDS ${GLSL})
+		DEPENDS ${GLSL}
+		BYPRODUCTS ${SPIRV})
 	list(APPEND SPIRV_BINARY_FILES ${SPIRV})
 endforeach(GLSL)
 
@@ -54,7 +55,8 @@ foreach(HLSL ${HLSL_SOURCE_FILES})
 		OUTPUT ${SPIRV}
 		COMMAND ${CMAKE_COMMAND} -E make_directory ${SHADER_OUTPUT_FOLDER}
 		COMMAND ${DXC_COMPILER} -spirv ${HLSL} -DSHADER_MODEL=1 -T vs_6_0 -E vs_main -Fo ${SPIRV} -fspv-debug=vulkan-with-source
-		DEPENDS ${HLSL})
+		DEPENDS ${HLSL}
+		BYPRODUCTS ${SPIRV})
 	list(APPEND SPIRV_BINARY_FILES ${SPIRV})
 endforeach(HLSL)
 
@@ -66,7 +68,8 @@ foreach(HLSL ${HLSL_SOURCE_FILES})
 		OUTPUT ${SPIRV}
 		COMMAND ${CMAKE_COMMAND} -E make_directory ${SHADER_OUTPUT_FOLDER}
 		COMMAND ${DXC_COMPILER} -spirv ${HLSL} -DSHADER_MODEL=1 -T gs_6_0 -E gs_main -Fo ${SPIRV} -fspv-debug=vulkan-with-source
-		DEPENDS ${HLSL})
+		DEPENDS ${HLSL}
+		BYPRODUCTS ${SPIRV})
 	list(APPEND SPIRV_BINARY_FILES ${SPIRV})
 endforeach(HLSL)
 

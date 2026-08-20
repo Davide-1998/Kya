@@ -69,6 +69,7 @@ set (SOURCES
 	"Vulkan/src/pcsx2/VKBuilders.h"
 	"Vulkan/src/pcsx2/VKBuilders.cpp"
 	"Vulkan/src/pcsx2/Selectors.cpp"
+	"Vulkan/src/pcsx2/Selectors.h"
 
 	"Vulkan/src/Texture/TextureCacheRowOffset.h"
 	"Vulkan/src/Texture/TextureCache.h"
@@ -177,7 +178,7 @@ if (RENDERER_HEADLESS OR FORCE_RENDERER_HEADLESS)
 	target_compile_definitions(Renderer PRIVATE HEADLESS)
 endif()
 
-	target_compile_definitions(Renderer PRIVATE "PLATFORM_WIN")
+target_compile_definitions(Renderer PRIVATE "PLATFORM_WIN")
 
 add_library(reflect-print ${ReflectPrintSrc})
 target_link_libraries(reflect-print PRIVATE ${Vulkan_LIBRARIES} spirv-reflect-static)
@@ -196,17 +197,7 @@ add_dependencies(Renderer Shaders)
 
 set(DXC_COMPILER "$ENV{VULKAN_SDK}/Bin/dxc.exe")
 set(SHADER_OUTPUT_FOLDER "${CMAKE_SOURCE_DIR}/bin/WIN/shaders")
-set( SHADER_SRC_DIR "${CMAKE_CURRENT_LIST_DIR}/Shaders/src/")
-
-
-cmake_path(NATIVE_PATH SHADER_SRC_DIR SHADER_SRC_DIR)
-string(REPLACE "\\" "\\\\" SHADER_SRC_DIR ${SHADER_SRC_DIR})
-
-cmake_path(NATIVE_PATH DXC_COMPILER DXC_COMPILER)
-string(REPLACE "\\" "\\\\" DXC_COMPILER ${DXC_COMPILER})
-
-cmake_path(NATIVE_PATH SHADER_OUTPUT_FOLDER SHADER_OUTPUT_FOLDER)
-string(REPLACE "\\" "\\\\" SHADER_OUTPUT_FOLDER ${SHADER_OUTPUT_FOLDER})
+set(SHADER_SRC_DIR "${CMAKE_CURRENT_LIST_DIR}/Shaders/src/")
 
 target_compile_definitions(Renderer PRIVATE
 	SHADER_OUTPUT_FOLDER="${SHADER_OUTPUT_FOLDER}"
