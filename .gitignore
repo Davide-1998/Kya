@@ -14,6 +14,7 @@ __pycache__
 upscaling/
 profiler/
 fonts/
+build/
 
 # Local renamer runtime state
 /tools/local_renamer/evaluation/runs/
