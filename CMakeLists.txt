@@ -34,6 +34,8 @@ include("src/port/ispc/ispc.cmake")
 set(CMAKE_C_COMPILER "clang")
 set(CMAKE_CXX_COMPILER "clang")
 
+set(CMAKE_BINARY_DIR ${CMAKE_SOURCE_DIR}/out/build)
+set(CMAKE_INSTALL_PREFIX ${CMAKE_SOURCE_DIR}/out/install)
 
 set (CMAKE_CXX_STANDARD 17)
 set (CMAKE_CXX_EXTENSIONS YES)
@@ -819,7 +821,7 @@ else()
 
 	add_custom_target(sync_files
 		COMMAND ${CMAKE_COMMAND} -E echo "Syncing files using robocopy..."
-		COMMAND "${CMAKE_CURRENT_SOURCE_DIR}/DoRobo" "${CMAKE_CURRENT_SOURCE_DIR}/assets/" "${CMAKE_CURRENT_SOURCE_DIR}/bin/${PLATFORM_BINARY_FOLDER}/"
+		COMMAND "${CMAKE_CURRENT_SOURCE_DIR}/DoRobo" "${CMAKE_CURRENT_SOURCE_DIR}/assets/" "${KYA_EXECUTABLE_DIRECTORY}"
 	)
 
 	add_dependencies(Kya sync_files)
