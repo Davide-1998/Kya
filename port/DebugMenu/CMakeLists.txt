@@ -145,11 +145,13 @@ set(JSON_BuildTests OFF CACHE INTERNAL "")
 add_subdirectory("ext/json")
 
 target_link_libraries(${TargetName} PRIVATE Renderer Port Texture Log Kya Dbghelp.lib imgui Gizmo magic_enum nlohmann_json::nlohmann_json glm)
-target_link_libraries(${TargetName} PRIVATE ws2_32)
+target_link_libraries(${TargetName} PRIVATE 
+	$<$<PLATFORM_ID:Windows>:ws2_32 shell32 ole32 uuid>
+)
 
 if(ENABLE_GOOGLE_FONT_LOADER)
 	target_sources(${TargetName} PRIVATE "src/GoogleFontLoader.h" "src/GoogleFontLoader.cpp")
-	target_link_libraries(${TargetName} PRIVATE winhttp.lib)
+	target_link_libraries(${TargetName} PRIVATE $<$<PLATFORM_ID:Windows>:winhttp>)
 	target_compile_definitions(${TargetName} PRIVATE ENABLE_GOOGLE_FONT_LOADER)
 endif()
 

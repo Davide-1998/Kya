@@ -33,6 +33,46 @@
 #include <map>
 #include <stdexcept>
 
+
+#include <filesystem>
+#include <string>
+#ifdef _WIN32
+  #define WIN32_LEAN_AND_MEAN
+  #define NOMINMAX
+  #include <windows.h>
+  #include <shlobj.h>
+#else
+  #include <pwd.h>
+  #include <unistd.h>
+#endif
+
+/**
+ * @brief Utility function used to retrieve user folder both on Linux and Windows
+ * 
+ * @return std::filesystem::path 
+ */
+std::filesystem::path getUserHomePath()
+{
+#ifdef _WIN32
+    PWSTR p = nullptr;
+    const HRESULT hr = SHGetKnownFolderPath(FOLDERID_Profile, 0, nullptr, &p);
+    std::filesystem::path result;
+    if (SUCCEEDED(hr)) {result = p;}
+    CoTaskMemFree(p); // safe on nullptr
+    if (FAILED(hr)) throw std::runtime_error("SHGetKnownFolderPath failed");
+    return result;
+#else
+    std::string buf(16384, '\0');
+    passwd pw{}, *res = nullptr;
+    int rc;
+    while ((rc = getpwuid_r(getuid(), &pw, buf.data(), buf.size(), &res)) == ERANGE)
+        buf.resize(buf.size() * 2);
+    if (rc != 0 || !res || !pw.pw_dir || !*pw.pw_dir)
+        throw std::runtime_error("Unable to determine user home directory");
+    return pw.pw_dir;
+#endif
+}
+
 namespace Debug::SaveLoad
 {
 	Debug::Setting<int> gDefaultSaveSlot = { "Default Save Slot", -1 };
@@ -100,7 +140,7 @@ namespace Debug::SaveLoad
 		bool refreshBackups = false;
 		std::string backupStatus;
 		std::string backupDirectory;
-		Debug::Setting<std::string> memoryCardDirectory = { "PCSX2 Memory Card Folder", "C:\\Users\\icey1\\Documents\\PCSX2\\memcards" };
+		Debug::Setting<std::string> memoryCardDirectory = { "PCSX2 Memory Card Folder", (getUserHomePath() / "Documents" / "PCSX2" / "memcards").string() };
 		bool memoryCardExportOpen = false;
 		int exportSourceSlot = 0;
 		int exportTargetSlot = 0;
