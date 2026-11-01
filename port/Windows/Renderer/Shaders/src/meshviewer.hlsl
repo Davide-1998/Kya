@@ -1,4 +1,7 @@
-#define int12_to_float(x)	(float)((float)x * 0.000244140625f)
+float int12_to_float(int x)
+{
+    return (float)x * 0.000244140625f;
+}
 
 cbuffer UniformBuffer : register(b0)
 {
