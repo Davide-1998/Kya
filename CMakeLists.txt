@@ -1,5 +1,9 @@
 cmake_minimum_required(VERSION 3.19.4)
 
+project(Kya
+	LANGUAGES C CXX
+)
+
 # Override SPIRV-Reflect settings
 OPTION(SPIRV_REFLECT_EXECUTABLE     "Build spirv-reflect executable" OFF)
 OPTION(SPIRV_REFLECT_EXAMPLES       "Build stripper examples" OFF)

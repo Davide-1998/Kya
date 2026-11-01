@@ -1,4 +1,6 @@
-project(Renderer)
+project(Renderer
+	LANGUAGES C CXX
+)
 
 find_package(Vulkan REQUIRED)
 
