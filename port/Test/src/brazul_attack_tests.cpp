@@ -79,7 +79,7 @@ namespace
 			actor.field_0x3188 = 5.0f;
 			actor.field_0x318c = 0.3f;
 			actor.field_0x3190 = 1.0f;
-			actor.FUN_003e60c0(); // Radius 2.75, inner radius 1.75.
+			actor.ManageTornadoRay(); // Radius 2.75, inner radius 1.75.
 		}
 
 		CActorManager manager;
@@ -117,7 +117,7 @@ TEST_F(BrazulAttackTest, RingPassesBelowAirborneTarget)
 TEST_F(BrazulAttackTest, ConeRayHitsPlayerCollisionBetweenFrames)
 {
 	PlaceTarget(2.1f);
-	// Exercise the same actor query as FUN_003e59e0, crossing the surface of a
+	// Exercise the same actor query as FUN_003e59e0 (i.e. now called ManageDirectRay()), crossing the surface of a
 	// dynamic player sphere in one 60 Hz step at the cone's speed of 8 units/s.
 	target.typeID = ACTOR_HERO_PRIVATE;
 	edColPRIM_OBJECT sphere{};
