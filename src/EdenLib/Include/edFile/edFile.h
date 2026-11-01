@@ -109,7 +109,7 @@ bool edFileFindFirst(edFILE_INFO* pFileInfo, char* pName);
 bool edFileFindClose(void);
 
 bool edFileDelete(char* szPath);
-bool edFileReleaseHandle(edFILEH* pFile);
+bool edFileClose(edFILEH* pFile);
 
 edFILE_INFO* GetFileInfoFromFile(edFILEH* pFile);
 

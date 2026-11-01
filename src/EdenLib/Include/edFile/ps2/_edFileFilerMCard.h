@@ -43,7 +43,10 @@ public:
 	virtual bool open(edFILEH* pFile, char* szPath);
 	virtual bool close(edFILEH* pFile);
 #ifdef PLATFORM_WIN
-	virtual bool cmdbreak();
+	virtual bool cmdbreak(){
+		// Unknown implementation `return true` as _edFileFilerCDVD.cpp:539 counterpart
+		return true;
+	};
 #endif
 	virtual uint read(edFILEH* pFile, void* pDst, uint requiredSize);
 	virtual bool write(edFILEH* pFile, void* pDst, uint size);

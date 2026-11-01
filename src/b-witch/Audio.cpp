@@ -1140,7 +1140,7 @@ void CancelQueuedSoundSampleLoad(CDoubleLinkedNode<SoundSampleEntry>* param_1)
 				edFileNoWaitStackFlush();
 				iVar1 = gCurrentSoundSampleFile->nbQueuedActions;
 			}
-			edFileReleaseHandle(gCurrentSoundSampleFile);
+			edFileClose(gCurrentSoundSampleFile);
 		}
 		gCurrentSoundSampleFile = (edFILEH*)0x0;
 		gCurrentLoadingSoundSample = (CDoubleLinkedNode<SoundSampleEntry>*)0x0;
@@ -2556,7 +2556,7 @@ void CAudioManager::ManageSoundSamples()
 		iVar1 = (gCurrentLoadingSoundSample->node).mode;
 		if (iVar1 == 2) {
 			if ((gCurrentSoundSampleFile != (edFILEH*)0x0) && (gCurrentSoundSampleFile->nbQueuedActions == 0)) {
-				edFileReleaseHandle(gCurrentSoundSampleFile);
+				edFileClose(gCurrentSoundSampleFile);
 				gCurrentSoundSampleFile = (edFILEH*)0x0;
 			}
 
@@ -3158,7 +3158,7 @@ bool SoundSampleEntry::LoadStreamCh()
 						edFileNoWaitStackCallBack(peVar5);
 					}
 				}
-				edFileReleaseHandle(gCurrentSoundSampleFile);
+				edFileClose(gCurrentSoundSampleFile);
 				gCurrentSoundSampleFile = (edFILEH*)0x0;
 			}
 			else {
