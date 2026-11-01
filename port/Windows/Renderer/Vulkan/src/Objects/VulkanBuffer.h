@@ -1,6 +1,7 @@
 #pragma once
 
 #include "VulkanIncludes.h"
+#include "VulkanRenderer.h"
 #include <array>
 
 class VulkanBuffer

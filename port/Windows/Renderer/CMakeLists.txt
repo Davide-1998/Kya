@@ -1,6 +1,6 @@
 project(Renderer)
 
-find_package(Vulkan REQUIRED FATAL_ERROR)
+find_package(Vulkan REQUIRED)
 
 add_subdirectory("Shaders")
 
@@ -81,6 +81,7 @@ set (SOURCES
 
 	"Vulkan/src/pcsx2/VKBuilders.h"
 	"Vulkan/src/pcsx2/VKBuilders.cpp"
+	"Vulkan/src/pcsx2/Selectors.h"
 	"Vulkan/src/pcsx2/Selectors.cpp"
 
 	"Vulkan/src/Texture/TextureCacheRowOffset.h"
