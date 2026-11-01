@@ -10,7 +10,7 @@
 #include <stdint.h>
 #include <fcntl.h>
 #include <io.h>
-#include "libfmemopen.h"
+#include <libfmemopen.h>
 
 #ifdef ENABLE_PSS_LOG
 #define printf
@@ -18,30 +18,44 @@
 #define log(...)
 #endif
 
+#if defined(_MSC_VER)
+    #define PACKED_BEGIN __pragma(pack(push, 1))
+    #define PACKED_END   __pragma(pack(pop))
+    #define PACKED_ATTR
+#else
+    #define PACKED_BEGIN
+    #define PACKED_END
+    #define PACKED_ATTR  __attribute__((packed))
+#endif
+
+PACKED_BEGIN
 typedef struct {
 	unsigned char id[4];
 	unsigned char sysClockRef[6];
 	unsigned char progMuxRate[3];
 	uint8_t reservedStuffing;
-}__attribute__((packed)) mpegPackHeader;
+}PACKED_ATTR mpegPackHeader;
 
+PACKED_BEGIN
 typedef struct {
 	unsigned char id[4];
 	unsigned char size[2];
-}__attribute__((packed)) mpegPesHeader;
+}PACKED_ATTR mpegPesHeader;
 
+PACKED_BEGIN
 typedef struct {
 	unsigned char flags[2];
 	uint8_t size; // size of extension data
-}__attribute__((packed)) mpegPrivate1ExtensionHead;
+}PACKED_ATTR mpegPrivate1ExtensionHead;
 
 /* PACK, PES and the PRIVATE1 extension seem to be actual PSS stuff, the rest seems to be konami specific */
-
+PACKED_BEGIN
 typedef struct {
 	unsigned char unknown[3]; // seems to be FF 90 00
 	uint8_t streamId;
-}__attribute__((packed)) mpegPrivate1ExtensionKonami;
+}PACKED_ATTR mpegPrivate1ExtensionKonami;
 
+PACKED_BEGIN
 typedef struct {
 	uint32_t unknown1;
 	uint16_t size; // only for subtitle streams, seems to be 7F 00 for audio
@@ -49,8 +63,9 @@ typedef struct {
 	uint8_t channels; // mono files have the next byte also set to 01, stereo files have 0 there
 	uint8_t unknown2;
 	unsigned char null[6];
-}__attribute__((packed)) konamiPrivate1Header;
+}PACKED_ATTR konamiPrivate1Header;
 
+PACKED_BEGIN
 typedef struct {
 	char magic[4];
 	unsigned char version[4];
@@ -59,7 +74,7 @@ typedef struct {
 	char samplerate[4];
 	unsigned char reserved2[12];
 	char name[0x10];
-}__attribute__((packed)) vagHeader;
+}PACKED_ATTR vagHeader;
 
 enum PesType {
 	MPEG_SEQUENCE_HEAD =		0x000001B3,

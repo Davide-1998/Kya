@@ -1,13 +1,10 @@
 cmake_minimum_required(VERSION 3.0)
 
-set(CMAKE_C_COMPILER "clang")
-
-project(pss_test)
-
-set(SOURCES "main.c")
-
-add_executable(pss_test ${SOURCES})
+project(pss_test
+    LANGUAGES C
+)
 
 add_subdirectory(pss)
 
-target_link_libraries(pss_test PRIVATE pss)
+add_executable(${PROJECT_NAME} "${CMAKE_CURRENT_SOURCE_DIR}/main.c")
+target_link_libraries(${PROJECT_NAME} PRIVATE pss::pss)
