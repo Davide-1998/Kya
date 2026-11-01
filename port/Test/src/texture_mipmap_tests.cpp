@@ -241,7 +241,7 @@ TEST(TextureMipmaps, DecodesPerLayerRegistersAndWindowsTex1Bridge)
 			packets[layer * 4 + reg].cmdA = 0x1000 * layer + reg;
 		}
 		Renderer::CombinedImageData image{};
-		Renderer::Kya::ProcessRenderCommandList(image, { packets, 4 }, layer);
+		Renderer::Kya::ProcessRenderCommandList(image, { packets, 4 });
 		EXPECT_EQ(image.registers.tex1.CMD, 0x1000u * layer + 1);
 		EXPECT_EQ(image.registers.mipTbp1.CMD, 0x1000u * layer + 2);
 		EXPECT_EQ(image.registers.mipTbp2.CMD, 0x1000u * layer + 3);

@@ -87,8 +87,7 @@ TEST(MaterialLayers, DecodesEachLayersTextureSamplerAlphaTestAndBlendRegisters)
 	Renderer::CombinedImageData first;
 	Renderer::CombinedImageData second;
 	const Renderer::Kya::G2D::CommandList commands{ packets, 4 };
-	Renderer::Kya::ProcessRenderCommandList(first, commands, 0);
-	Renderer::Kya::ProcessRenderCommandList(second, commands, 1);
+	Renderer::Kya::ProcessRenderCommandList(first, commands);
 	EXPECT_EQ(first.registers.tex.CMD, firstTex.CMD);
 	EXPECT_EQ(second.registers.tex.CMD, secondTex.CMD);
 	EXPECT_EQ(first.registers.clamp.CMD, 0u);
