@@ -45,6 +45,7 @@ set(SOURCES
 	"src/rendering_helpers.cpp"
 	"include/port.h"
 	"include/gamepad.h"
+	"include/winsavefile.h"
 )
 
 add_library(Port ${SOURCES})

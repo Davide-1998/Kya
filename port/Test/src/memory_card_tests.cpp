@@ -1,7 +1,8 @@
 #include <gtest/gtest.h>
 #include "../../DebugMenu/src/DebugMemoryCard.h"
+#include <fstream>
+
 #ifdef PLATFORM_WIN
-#include "../../../src/EdenLib/edFile/sources/ps2/WinSaveFile.h"
 #include "../../DebugMenu/src/DebugMemoryCardFile.h"
 #endif
 

@@ -21,7 +21,8 @@
 
 #include "DebugSetting.h"
 #include "edFile/edFileCRC32.h"
-#include "EdenLib/edFile/sources/ps2/WinSaveFile.h"
+// This is a workaround, blind implementation of WinSaveFile class due to missing sources
+#include "winsavefile.h"
 #include "DebugMemoryCardFile.h"
 
 #include <chrono>
@@ -436,7 +437,7 @@ namespace Debug::SaveLoad
 					try {
 						std::filesystem::create_directories(saved.screenshot.parent_path());
 						WinSaveFile image(saved.screenshot);
-						if (!image.IsOpen() || !image.Write(pendingScreenshot.data(), static_cast<uint>(pendingScreenshot.size())) || !image.Commit())
+						if (!image.Exists() || !image.Write(pendingScreenshot) || !image.Commit())
 							throw std::runtime_error("Could not write screenshot");
 					}
 					catch (const std::exception& error) {
@@ -450,7 +451,7 @@ namespace Debug::SaveLoad
 					const auto destination = directory / name;
 					if (!std::filesystem::exists(destination)) {
 						WinSaveFile output(destination);
-						if (!output.IsOpen() || !output.Write(saved.data.data(), static_cast<uint>(saved.data.size())) || !output.Commit()) {
+						if (!output.Exists() || !output.Write(saved.data) || !output.Commit()) {
 							throw std::runtime_error("Could not write checkpoint archive");
 						}
 						archiveStatus = "Archived autosave for level " + std::to_string(saved.checkpoint.level) +
@@ -598,7 +599,7 @@ namespace Debug::SaveLoad
 				try {
 					// Reuse atomic save replacement and preserve the current slot in the backup rotation.
 					WinSaveFile output(backup.destination, 0x2e);
-					if (!output.IsOpen() || !output.Write(backup.data.data(), static_cast<uint>(backup.data.size())) || !output.Commit()) {
+					if (!output.Exists() || !output.Write(backup.data) || !output.Commit()) {
 						backupStatus = "Restore failed: could not back up or replace the current slot";
 					}
 					else {
