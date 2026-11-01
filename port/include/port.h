@@ -20,16 +20,24 @@ typedef unsigned long long ulong;
 #define settag(t,i,a,q) (t)->id=(i),(t)->next=(sceDmaTag *)(a),(t)->qwc=(u_short)(q)
 #define LINK_CHAR(a) ((ulong)0x4b4e494c << 0x20) | a
 
+#if defined(_MSC_VER)
+    #define ALIGN(n) __declspec(align(n))
+#elif defined(__GNUC__) || defined(__clang__)
+    #define ALIGN(n) __attribute__((aligned(n)))
+#else
+    #error "ALIGN: unsupported compiler"
+#endif
+
 /*
  * DMA Tag
  */
-typedef struct _sceDmaTag {
+typedef ALIGN(16) struct _sceDmaTag {
 	u_short             qwc;    /* transfer count */
 	u_char              mark;   /* mark */
 	u_char              id;     /* tag */
 	u_int next;  /* next tag */
 	u_int               p[2];   /* padding */
-} sceDmaTag __attribute__((aligned(16)));
+} sceDmaTag;
 
 inline void* sceDmaAddEnd(sceDmaTag** tag, int qwc, void* addr)
 {
