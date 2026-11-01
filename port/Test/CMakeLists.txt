@@ -84,7 +84,7 @@ endif()
 target_compile_definitions(Renderer PRIVATE HEADLESS)
 
 set_target_properties(KyaPortTest PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${KYA_EXECUTABLE_DIRECTORY}")
-target_link_libraries(KyaPortTest PRIVATE gtest gtest_main Kya Renderer DebugMenu glfw imgui nlohmann_json::nlohmann_json)
+target_link_libraries(KyaPortTest PRIVATE gtest gtest_main Kya Renderer Texture DebugMenu glfw imgui nlohmann_json::nlohmann_json)
 
 add_test(KyaPortTest KyaPortTest)
 set_tests_properties(KyaPortTest PROPERTIES WORKING_DIRECTORY ${KYA_EXECUTABLE_DIRECTORY})
